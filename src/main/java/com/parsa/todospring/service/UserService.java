@@ -6,6 +6,8 @@ import com.parsa.todospring.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class UserService {
     private UserRepository userRepository;
@@ -26,5 +28,9 @@ public class UserService {
 
     public void saveUser(User user){
         userRepository.saveUser(user);
+    }
+
+    public List<User> getUsers(){
+        return userRepository.getUsers();
     }
 }
