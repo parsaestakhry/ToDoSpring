@@ -13,7 +13,18 @@ public class User {
     private int id;
     private String username;
     private String email;
-    private Date date;
+    private Date created_at;
+
+    public String getPassword_hash() {
+        return password_hash;
+    }
+
+    public void setPassword_hash(String password_hash) {
+        this.password_hash = password_hash;
+    }
+
+    private String password_hash;
+
 
     public User getUser() {
         return user;
@@ -47,12 +58,12 @@ public class User {
         this.email = email;
     }
 
-    public Date getDate() {
-        return date;
+    public Date getCreated_at() {
+        return created_at;
     }
 
-    public void setDate(Date date) {
-        this.date = date;
+    public void setCreated_at(Date created_at) {
+        this.created_at = created_at;
     }
 
     @Override
@@ -62,7 +73,7 @@ public class User {
                 ", id=" + id +
                 ", username='" + username + '\'' +
                 ", email='" + email + '\'' +
-                ", date=" + date +
+                ", created_at=" + created_at +
                 '}';
     }
 
