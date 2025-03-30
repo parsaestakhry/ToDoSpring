@@ -9,11 +9,13 @@ import java.util.Date;
 @Component
 @Scope("prototype")
 public class User {
-    private User user;
     private int id;
     private String username;
     private String email;
     private Date created_at;
+    private String password_hash;
+
+
 
     public String getPassword_hash() {
         return password_hash;
@@ -23,16 +25,8 @@ public class User {
         this.password_hash = password_hash;
     }
 
-    private String password_hash;
 
 
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
 
     public int getId() {
         return id;
@@ -69,7 +63,6 @@ public class User {
     @Override
     public String toString() {
         return "User{" +
-                "user=" + user +
                 ", id=" + id +
                 ", username='" + username + '\'' +
                 ", email='" + email + '\'' +
