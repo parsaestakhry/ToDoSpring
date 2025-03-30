@@ -39,9 +39,18 @@ public class UserRepository {
 
     public List<User> getUsers(){
         String sql = "SELECT * FROM users;";
-        List<User> data = jdbcTemplate.queryForList(sql, User.class);
-        System.out.println(data);
-        return data;
+        RowMapper<User> mapper = (rs, rowNum) -> {
+            User user = new User();
+            user.setId(rs.getInt("id"));
+            user.setEmail(rs.getString("email"));
+            user.setCreated_at(rs.getDate("created_at"));
+            user.setUsername(rs.getString("username"));
+            user.setPassword_hash(rs.getString("password_hash"));
+
+            return user;
+        };
+
+        return jdbcTemplate.query(sql, mapper);
     }
 
 
