@@ -6,6 +6,8 @@ import com.parsa.todospring.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/user")
 public class UserController {
@@ -18,5 +20,10 @@ public class UserController {
     @PostMapping("/adduser")
     public void addUser(@RequestBody User user){
         studentService.saveUser(user);
+    }
+
+    @GetMapping("/getusers")
+    public List<User> getUsers(){
+        return studentService.getUsers();
     }
 }
