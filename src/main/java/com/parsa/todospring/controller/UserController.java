@@ -1,15 +1,22 @@
 package com.parsa.todospring.controller;
 
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.parsa.todospring.model.User;
+import com.parsa.todospring.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/user")
 public class UserController {
-    @GetMapping("/getusers")
-    public void getUsers(){
 
+    @Autowired
+    private UserService studentService;
+
+
+
+    @PostMapping("/adduser")
+    public void addUser(@RequestBody User user){
+        studentService.saveUser(user);
     }
 }
