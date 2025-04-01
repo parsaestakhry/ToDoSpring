@@ -47,7 +47,7 @@ public class ToDoListRepository {
 
     public ToDoList geToDoList(int id) {
         String sql = "SELECT * FROM todo_lists WHERE id = ?;";
-        RowMapper<ToDoList> mapper = (rs,rowNum) -> {
+        RowMapper<ToDoList> mapper = (rs, rowNum) -> {
             ToDoList toDoList = new ToDoList();
             toDoList.setId(rs.getInt("id"));
             toDoList.setCreated_at(rs.getDate("created_at"));
@@ -57,6 +57,14 @@ public class ToDoListRepository {
 
         };
         return jdbcTemplate.queryForObject(sql, mapper, id);
+    }
+    
+
+    public ToDoList updateToDoList(ToDoList updatedToDoList) {
+        String sql = "UPDATE todo_lists SET name = ?, created_at = ?, user_id = ? WHERE id = ?";
+        jdbcTemplate.update(sql, updatedToDoList.getName(), updatedToDoList.getCreated_at(),
+                updatedToDoList.getUser_id(), updatedToDoList.getId());
+        return updatedToDoList;
     }
 
 }
