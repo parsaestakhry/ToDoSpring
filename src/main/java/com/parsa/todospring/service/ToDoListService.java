@@ -41,6 +41,11 @@ public class ToDoListService {
     public ToDoList updateToDoList(ToDoList updatedToDoList) {
         return toDoListRepository.updateToDoList(updatedToDoList);
     }
+
+
+    public boolean deleteToDoList(int id) {
+        return toDoListRepository.deleteToDoList(id);
+    }
     
     
 }
