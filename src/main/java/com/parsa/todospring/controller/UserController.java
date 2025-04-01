@@ -7,6 +7,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.PathVariable;
+
 
 @RestController
 @RequestMapping("/api/user")
@@ -28,7 +32,12 @@ public class UserController {
     }
 
     @GetMapping("/getuser/{id}")
-    public User getUser(@PathVariable int id){
+    public User getUser(@PathVariable int id) {
         return userService.getUser(id);
+    }
+    
+    @PutMapping("/updateuser")
+    public User updateUser (@RequestBody User updatedUser) {
+        return userService.updateUser(updatedUser);
     }
 }

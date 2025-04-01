@@ -37,4 +37,8 @@ public class UserService {
     public User getUser(int id) {
         return userRepository.getUser(id);
     }
+
+    public User updateUser(User updatedUser) {
+        return userRepository.updateUser(updatedUser);
+    }
 }

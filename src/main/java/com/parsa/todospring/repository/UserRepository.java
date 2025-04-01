@@ -1,6 +1,5 @@
 package com.parsa.todospring.repository;
 
-
 import com.parsa.todospring.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -11,7 +10,6 @@ import java.util.List;
 
 @Repository
 public class UserRepository {
-
 
     @Autowired
     private JdbcTemplate jdbcTemplate;
@@ -24,7 +22,7 @@ public class UserRepository {
         this.jdbcTemplate = jdbcTemplate;
     }
 
-    public void saveUser(User user){
+    public void saveUser(User user) {
         String sql = "INSERT INTO users(id, username, email, password_hash, created_at) VALUES (?,?,?,?,?);";
         int rows = jdbcTemplate.update(sql,
                 user.getId(),
@@ -36,8 +34,7 @@ public class UserRepository {
         System.out.println("rows affected : " + rows);
     }
 
-
-    public List<User> getUsers(){
+    public List<User> getUsers() {
         String sql = "SELECT * FROM users;";
         RowMapper<User> mapper = (rs, rowNum) -> {
             User user = new User();
@@ -67,10 +64,17 @@ public class UserRepository {
         return jdbcTemplate.queryForObject(sql, mapper, id);
     }
 
+    public User updateUser(User updatedUser) {
+        String sql = "UPDATE users SET username = ?, email = ?, password_hash = ? WHERE id = ?;";
+        int rows = jdbcTemplate.update(sql,
+                updatedUser.getUsername(),
+                updatedUser.getEmail(),
+                updatedUser.getPassword_hash(),
+                updatedUser.getId());
 
-     
+        System.out.println("rows affected : " + rows);
 
-
-
+        return getUser(updatedUser.getId()); // Return the updated user
+    }
 
 }
