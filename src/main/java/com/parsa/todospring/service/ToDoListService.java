@@ -28,6 +28,10 @@ public class ToDoListService {
         toDoListRepository.createToDoList(toDoList);
     }
 
+    public void getToDoList() {
+        toDoListRepository.getToDolists();
+    }
+
     
     
 }
