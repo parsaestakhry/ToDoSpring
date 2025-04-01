@@ -13,22 +13,22 @@ import java.util.List;
 public class UserController {
 
     @Autowired
-    private UserService studentService;
+    private UserService userService;
 
 
 
     @PostMapping("/adduser")
     public void addUser(@RequestBody User user){
-        studentService.saveUser(user);
+        userService.saveUser(user);
     }
 
     @GetMapping("/getusers")
     public List<User> getUsers(){
-        return studentService.getUsers();
+        return userService.getUsers();
     }
 
     @GetMapping("/getuser/{id}")
-    public void getUser(@PathVariable int id){
-        System.out.println(id);
+    public User getUser(@PathVariable int id){
+        return userService.getUser(id);
     }
 }
