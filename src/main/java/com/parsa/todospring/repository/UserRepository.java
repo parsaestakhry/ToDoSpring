@@ -53,6 +53,20 @@ public class UserRepository {
         return jdbcTemplate.query(sql, mapper);
     }
 
+    public User getUser(int id) {
+        String sql = "SELECT * FROM users WHERE id = ?;";
+        RowMapper<User> mapper = (rs, rowNum) -> {
+            User user = new User();
+            user.setId(rs.getInt("id"));
+            user.setEmail(rs.getString("email"));
+            user.setCreated_at(rs.getDate("created_at"));
+            user.setUsername(rs.getString("username"));
+            user.setPassword_hash(rs.getString("password_hash"));
+            return user;
+        };
+        return jdbcTemplate.queryForObject(sql, mapper, id);
+    }
+
 
      
 
