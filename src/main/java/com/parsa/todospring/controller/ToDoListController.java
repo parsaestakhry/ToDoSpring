@@ -1,16 +1,18 @@
 package com.parsa.todospring.controller;
 
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.parsa.todospring.model.ToDoList;
 import com.parsa.todospring.service.ToDoListService;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 
 
@@ -27,10 +29,11 @@ public class ToDoListController {
     }
 
     @GetMapping("/getlists")
-    public void getToDoList() {
-        toDoListService.getToDoList();
+    public List<ToDoList> getToDoLists() {
+        return toDoListService.getToDoLists();
     }
     
+
 
     
     
