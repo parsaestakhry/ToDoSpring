@@ -41,4 +41,8 @@ public class UserService {
     public User updateUser(User updatedUser) {
         return userRepository.updateUser(updatedUser);
     }
+
+    public Boolean deleteUser(int id) {
+        return userRepository.deleteUser(id);
+    }
 }

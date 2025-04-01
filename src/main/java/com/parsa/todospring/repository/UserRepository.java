@@ -77,4 +77,12 @@ public class UserRepository {
         return getUser(updatedUser.getId()); // Return the updated user
     }
 
+    public Boolean deleteUser(int id) {
+
+        String sql = "DELETE FROM users WHERE id = ?;";
+        int rows = jdbcTemplate.update(sql, id);
+        return rows > 0;
+        
+    }
+
 }
