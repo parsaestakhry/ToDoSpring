@@ -34,6 +34,9 @@ public class ToDoListService {
         return toDoListRepository.getToDolists();
     }
 
+    public ToDoList getToDoList(int id) {
+        return toDoListRepository.geToDoList(id);
+    }
     
     
 }
