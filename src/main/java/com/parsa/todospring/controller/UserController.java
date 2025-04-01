@@ -26,4 +26,9 @@ public class UserController {
     public List<User> getUsers(){
         return studentService.getUsers();
     }
+
+    @GetMapping("/getuser/{id}")
+    public void getUser(@PathVariable int id){
+        System.out.println(id);
+    }
 }
