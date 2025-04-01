@@ -67,4 +67,10 @@ public class ToDoListRepository {
         return updatedToDoList;
     }
 
+    public boolean deleteToDoList(int id) {
+        String sql = "DELETE FROM todo_lists WHERE id = ?;";
+        int rows = jdbcTemplate.update(sql, id);
+        return rows > 0;
+    }
+
 }
