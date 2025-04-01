@@ -30,7 +30,11 @@ public class UserService {
         userRepository.saveUser(user);
     }
 
-    public List<User> getUsers(){
+    public List<User> getUsers() {
         return userRepository.getUsers();
+    }
+    
+    public User getUser(int id) {
+        return userRepository.getUser(id);
     }
 }
