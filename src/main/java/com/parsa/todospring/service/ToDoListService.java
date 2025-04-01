@@ -1,5 +1,7 @@
 package com.parsa.todospring.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -28,8 +30,8 @@ public class ToDoListService {
         toDoListRepository.createToDoList(toDoList);
     }
 
-    public void getToDoList() {
-        toDoListRepository.getToDolists();
+    public List<ToDoList> getToDoLists() {
+        return toDoListRepository.getToDolists();
     }
 
     
