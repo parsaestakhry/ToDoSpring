@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PutMapping;
+
 
 
 
@@ -38,7 +40,14 @@ public class ToDoListController {
     public ToDoList getToDoList(@PathVariable int id) {
         return toDoListService.getToDoList(id);
     }
+
+    @PutMapping("/updatelist/{id}")
+    public ToDoList updateToDoList(@RequestBody ToDoList toDoList) {
+        return toDoListService.updateToDoList(toDoList);
+    }
     
+
+
 
 
     
