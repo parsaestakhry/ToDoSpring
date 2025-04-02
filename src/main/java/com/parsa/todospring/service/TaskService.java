@@ -31,4 +31,9 @@ public class TaskService {
         return taskRepository.getTasks();
     }
 
+    public Task getTask(int id) {
+        return taskRepository.getTask(id);
+    }
+
+
 }
