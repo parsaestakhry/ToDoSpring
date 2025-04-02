@@ -46,10 +46,9 @@ public class TaskRepository {
 
     }
 
-
     public Task getTask(int id) {
         String sql = "SELECT * FROM tasks WHERE id = ?;";
-        RowMapper<Task> mapper = (rs,rowNum) -> {
+        RowMapper<Task> mapper = (rs, rowNum) -> {
             Task task = new Task();
 
             task.setCreated_at(rs.getDate("created_at"));
@@ -65,6 +64,14 @@ public class TaskRepository {
 
         return jdbcTemplate.queryForObject(sql, mapper, id);
 
+    }
+
+    public Task updateTask(Task task) {
+        String sql = "UPDATE tasks SET  title = ?, description = ?, is_completed = ?, due_date = ? WHERE id = ?;";
+        jdbcTemplate.update(sql, task.getTitle(), task.getDescription(), task.isIs_completed(), task.getDue_date(),
+                task.getId());
+
+        return task;
     }
 
 }
