@@ -14,6 +14,8 @@ public class Task {
     private String title;
     private String description;
     private boolean is_completed;
+    private Date due_date;
+    
     
     public int getId() {
         return id;
@@ -55,6 +57,12 @@ public class Task {
     public String toString() {
         return "Task [id=" + id + ", list_id=" + list_id + ", created_at=" + created_at + ", title=" + title
                 + ", description=" + description + ", is_completed=" + is_completed + "]";
+    }
+    public Date getDue_date() {
+        return due_date;
+    }
+    public void setDue_date(Date due_date) {
+        this.due_date = due_date;
     }
 
 
