@@ -1,5 +1,7 @@
 package com.parsa.todospring.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -23,6 +25,10 @@ public class TaskService {
 
     public void createTask(Task task) {
         taskRepository.createTask(task);
+    }
+
+    public List<Task> getTasks() {
+        return taskRepository.getTasks();
     }
 
 }
