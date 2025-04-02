@@ -46,4 +46,25 @@ public class TaskRepository {
 
     }
 
+
+    public Task getTask(int id) {
+        String sql = "SELECT * FROM tasks WHERE id = ?;";
+        RowMapper<Task> mapper = (rs,rowNum) -> {
+            Task task = new Task();
+
+            task.setCreated_at(rs.getDate("created_at"));
+            task.setDescription(rs.getString("description"));
+            task.setDue_date(rs.getDate("due_date"));
+            task.setId(rs.getInt("id"));
+            task.setIs_completed(rs.getBoolean("is_completed"));
+            task.setTitle(rs.getString("title"));
+
+            return task;
+
+        };
+
+        return jdbcTemplate.queryForObject(sql, mapper, id);
+
+    }
+
 }
